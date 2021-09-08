@@ -21,24 +21,29 @@ def get_sales_data():
     (A Python function description goes between triple double quotes like this, and should always be inside the function, 
     right underneath the function name.)
     """
-    print("Please enter sales data from the last market.")
-    print("Data should be six numbers, separated by commas.")
-    print("Example: 10,20,30,40,50,60\n")
+    while True:
+        print("Please enter sales data from the last market.")
+        print("Data should be six numbers, separated by commas.")
+        print("Example: 10,20,30,40,50,60\n")
 
-    data_str = input("Enter your data here: ")
-    
-    sales_data = data_str.split(",") 
-    """
-    So, we defined a new variable called sales_data and use the split() method on 
-    our data string, to break it up at the commas. This will remove the commas from 
-    the string. Let’s print our sales_data out to the terminal to take a look at our 
-    new list. And there we can see, each value from our string has been added to the list,  
-    the commas here separate the items in the list, they are not the same string commas 
-    that we removed with the split method. In order to insert our data into our spreadsheet,
-    our values need to be in a list like this.
-    """
-    validate_data(sales_data)
-    
+        data_str = input("Enter your data here: ")
+        
+        sales_data = data_str.split(",") 
+        """
+        So, we defined a new variable called sales_data and use the split() method on 
+        our data string, to break it up at the commas. This will remove the commas from 
+        the string. Let’s print our sales_data out to the terminal to take a look at our 
+        new list. And there we can see, each value from our string has been added to the list,  
+        the commas here separate the items in the list, they are not the same string commas 
+        that we removed with the split method. In order to insert our data into our spreadsheet,
+        our values need to be in a list like this.
+        """
+        if validate_data(sales_data):
+            print("Data is valid!")
+            break
+        
+        return sales_data
+
 def validate_data(values):
     """
     Inside the try, converts all string values into integers.
@@ -51,6 +56,11 @@ def validate_data(values):
             raise ValueError (
                 f"Exactly 6 values required, you provided {len(values)}"
             )
+
     except ValueError as e:
         print(f"Invalid data: {e}, please try again.\n")
+        return False
+
+    return True
+
 get_sales_data()
