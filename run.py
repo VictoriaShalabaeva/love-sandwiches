@@ -1,4 +1,8 @@
 # At the beginning put in terminal: 'pip3 install gspread google-auth'
+# 'pip3 freeze' in terminal shows all packages installed
+# 'pip3 freeze --local > requirements.txt' redirects the output to a file called requirements.txt.
+# 'pip3 uninstal ...' uninstals package
+# 'pip3 install -r requirements.txt' instals all packages listed in the file
 
 import gspread
 from google.oauth2.service_account import Credentials
